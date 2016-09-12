@@ -11,8 +11,8 @@ public class ServeurSocket {
 		try {
 			serversocket = new ServerSocket(port);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("erreur grave création socket serveur   :   "+e);
+			System.exit(0);
 		}
 		
 	}
