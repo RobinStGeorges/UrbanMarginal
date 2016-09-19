@@ -1,5 +1,6 @@
 package outils.connexion;
 import java.io.IOException;
+
 import  java.net.ServerSocket;
 import java.net.Socket;
 public class ServeurSocket extends Thread {
@@ -25,6 +26,7 @@ public class ServeurSocket extends Thread {
 				System.out.println("le serveur attend");
 				socket=serverSocket.accept();
 				System.out.println("Un client s'est connecté");
+				new Connection(socket,leRecepteur);
 			} catch (IOException e) {
 				System.out.println("erreur grave création socket serveur   :   "+e);
 				System.exit(0);
