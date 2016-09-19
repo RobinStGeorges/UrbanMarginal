@@ -1,7 +1,7 @@
 package outils.connexion;
 import java.io.IOException;
 import  java.net.ServerSocket;
-public class ServeurSocket {
+public class ServeurSocket extends Thread {
 	private Object lerecepteur;
 	private ServerSocket serversocket;
 	int port;
@@ -14,6 +14,7 @@ public class ServeurSocket {
 			System.out.println("erreur grave création socket serveur   :   "+e);
 			System.exit(0);
 		}
+		start();
 		
 	}
 	
