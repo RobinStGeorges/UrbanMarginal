@@ -12,6 +12,15 @@ import javax.swing.JOptionPane;
  *Classe
  */
 public class Connection extends Thread {
+	public void envoie(Object unObjet) {
+		try {
+			out.writeObject(unObjet);
+			out.flush();
+		} catch (IOException e) {
+			System.out.println("Erreur sur le OUT Connection");
+			e.printStackTrace();
+		}
+	}
 	private Object leRecepteur;
 	private ObjectInputStream in;
 	private ObjectOutputStream out;
@@ -41,14 +50,14 @@ public class Connection extends Thread {
 	public void run(){
 		boolean inOk=true;
 		Object reception;
-		while(inOk=true){
+		while(inOk){
 			try {
 				reception=in.readObject();
 			} catch (ClassNotFoundException e) {
 				System.out.println("Erreur de classe");
 				e.printStackTrace();
 			} catch (IOException e) {
-				JOptionPane.showMessageDialog(null, "L'ordinateur distant s'est deconecte");
+				JOptionPane.showMessageDialog(null, "L'ordinateur distant s'est deconnecte");
 				e.printStackTrace();
 				inOk=false;
 				try {
