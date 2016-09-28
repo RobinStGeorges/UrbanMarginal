@@ -14,7 +14,6 @@ public class Arene extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	
 
 	/**
 	 * Create the frame.
