@@ -12,29 +12,39 @@ import javax.swing.border.EmptyBorder;
 import controleur.Global;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTextField;
 
 public class ChoixJoueur extends JFrame implements Global {
+	private int numPerso = 1;
+	private JLabel lblPersonnage ;
+	
+	private void affichePerso(){
+		lblPersonnage.setIcon(new ImageIcon(PERSO+numPerso+MARCHE+1+"d"+DROITE+EXTIMAGE));
+	}
 	private void souris_normal(){
-		contentPane.setCursor(new Cursor(DEFAULT_CURSOR));
-		
+		contentPane.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 	}
 	private void souris_doigt(){
-		contentPane.setCursor(new Cursor(HAND_CURSOR));
-		
+		contentPane.setCursor(new Cursor(Cursor.HAND_CURSOR));
 	}
 	private void lblPrecedent_clic(){
-		
+		numPerso =(numPerso + NBPERSO + 1) % NBPERSO + 1 ;
+		affichePerso();
 	}
 	private void lblSuivant_clic(){
-		
+		numPerso=(numPerso)%NBPERSO +1;
+		affichePerso();
 	}
 	private void lblGo_clic(){
-		
+		if(txtPseudo.getText().equals("")){
+			JOptionPane.showMessageDialog(null, "Veillez entrer un pseudo !");
+			txtPseudo.requestFocus();
+		}
 	}
-
 	private JPanel contentPane;
 	private JTextField txtPseudo;
 
@@ -66,10 +76,7 @@ public class ChoixJoueur extends JFrame implements Global {
 				 * action clic btn precedent
 				 */
 				lblPrecedent_clic();
-				
 			}
-
-			
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
 				souris_doigt();
@@ -122,8 +129,8 @@ public class ChoixJoueur extends JFrame implements Global {
 		contentPane.add(txtPseudo);
 		txtPseudo.setColumns(10);
 		
-		JLabel lblPersonnage = new JLabel("");
-		lblPersonnage.setBounds(140, 114, 120, 123);
+		lblPersonnage = new JLabel("");
+		lblPersonnage.setBounds(181, 114, 120, 123);
 		contentPane.add(lblPersonnage);
 		
 		JLabel LblFond = new JLabel("");
@@ -131,6 +138,7 @@ public class ChoixJoueur extends JFrame implements Global {
 		
 		LblFond.setIcon(new ImageIcon(FONDCHOIX));
 		contentPane.add(LblFond);
+		affichePerso();
 		
 	}
 }

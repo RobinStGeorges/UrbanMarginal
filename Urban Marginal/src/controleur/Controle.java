@@ -44,7 +44,7 @@ public Controle(){
 		else{
 			if ((new ClientSocket((String) info,PORT,this)).isConnectionOk()){
 				frmEntreeJeu.dispose();
-				frmChoixJoueur = new ChoixJoueur();
+				frmChoixJoueur = new ChoixJoueur(this);
 				frmChoixJoueur.setVisible(true);
 			}
 		}

@@ -5,7 +5,7 @@ import outils.connexion.Connection;
 
 public class JeuClient extends Jeu {
 	public JeuClient(Controle controle){
-		
+		super.controle=controle;
 	}
 
 	@Override
