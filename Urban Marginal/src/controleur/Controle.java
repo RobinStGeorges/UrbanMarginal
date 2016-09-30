@@ -3,6 +3,7 @@ package controleur;
 import javax.swing.JFrame;
 
 import modele.Jeu;
+import modele.JeuClient;
 import modele.JeuServeur;
 import outils.connexion.ClientSocket;
 import outils.connexion.ServeurSocket;
@@ -35,8 +36,15 @@ public class Controle implements Global {
 		if (uneFrame instanceof EntreeJeu) {
 			evenementEntreeJeu(info);
 		}
+		if (uneFrame instanceof ChoixJoueur){
+			evenementChoixJoueur();
+		}
 	}
-
+	private void evenementChoixJoueur(Object info){
+		((JeuClient)leJeu).envoi(null, info);
+		frmChoixJoueur.dispose();
+		frmArene.setVisible(true);
+	}
 	private void evenementEntreeJeu(Object info) {
 		if ((String) info == "serveur") {
 			new ServeurSocket(this, PORT);

@@ -17,5 +17,6 @@ public interface Global {
 	public static final int NBPERSO  = 3;
 	public static final int H_PERSO  = 44;
 	public static final int L_PERSO  = 39;
-	
+	public static final String SEPARE = "~";
+	public static final int PSEUDO = 0;
 }

@@ -22,7 +22,7 @@ import javax.swing.JTextField;
 public class ChoixJoueur extends JFrame implements Global {
 	private int numPerso = 1;
 	private JLabel lblPersonnage;
-
+	private Controle controle;
 	private void affichePerso() {
 		lblPersonnage.setIcon(new ImageIcon(PERSO + numPerso + MARCHE + 1 + "d" + DROITE + EXTIMAGE));
 	}
@@ -50,6 +50,9 @@ public class ChoixJoueur extends JFrame implements Global {
 			JOptionPane.showMessageDialog(null, "Veillez entrer un pseudo !");
 			txtPseudo.requestFocus();
 		}
+		else {
+			controle.evenementVue(this,);
+		}
 	}
 
 	private JPanel contentPane;
@@ -64,7 +67,7 @@ public class ChoixJoueur extends JFrame implements Global {
 	 */
 	public ChoixJoueur(Controle controle) {
 		setTitle("Choice");
-
+		this.controle=controle;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		setBounds(100, 100, 416, 313);
