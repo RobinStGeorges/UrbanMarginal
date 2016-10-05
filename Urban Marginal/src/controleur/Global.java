@@ -19,4 +19,5 @@ public interface Global {
 	public static final int L_PERSO  = 39;
 	public static final String SEPARE = "~";
 	public static final int PSEUDO = 0;
+	
 }

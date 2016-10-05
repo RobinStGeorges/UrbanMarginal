@@ -4,6 +4,7 @@ import controleur.Controle;
 import outils.connexion.Connection;
 
 public class JeuClient extends Jeu {
+	private Connection connection;
 	public JeuClient(Controle controle){
 		super.controle=controle;
 	}
@@ -14,16 +15,22 @@ public class JeuClient extends Jeu {
 		
 	}
 
-	@Override
+	
 	public void setConnection(Connection connection) {
-		// TODO Auto-generated method stub
+		this.connection = connection;
 		
-	}
+}
 
 	@Override
 	public void reception(Connection connection, Object info) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+
+	public void envoi(Object info) {
+		// TODO Auto-generated method stub
+		super.envoi(this.connection, info);
 	}
 
 }
