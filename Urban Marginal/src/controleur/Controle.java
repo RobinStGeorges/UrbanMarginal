@@ -1,13 +1,15 @@
 package controleur;
 
-import java.sql.Connection;
+
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import modele.Jeu;
 import modele.JeuClient;
 import modele.JeuServeur;
 import outils.connexion.ClientSocket;
+import outils.connexion.Connection;
 import outils.connexion.ServeurSocket;
 import vue.Arene;
 import vue.ChoixJoueur;
@@ -21,7 +23,7 @@ public class Controle implements Global {
 	private outils.connexion.Connection connection;
 	
 	public void receptionInfo(Connection connection, Object info){
-		leJeu.reception(connection, info);
+		leJeu.reception(connection,info);
 	}
 
 	public Controle() {
@@ -50,17 +52,33 @@ public class Controle implements Global {
 			evenementChoixJoueur(info);
 		}
 	}
+	public void  evenementModele(Object unJeu,String ordre,Object info){
+		if(unJeu instanceof JeuServeur){
+			evenementJeuServeur(ordre,info);
+		}
+	}
+	private void evenementJeuServeur(String ordre, Object info) {
+		// TODO Auto-generated method stub
+		if(ordre=="ajout mur"){
+			frmArene.ajoutMur((JLabel)info);
+			//test
+			//System.out.println("mur sont ajouté au frmArene");
+		}
+	}
+
 	private void evenementChoixJoueur(Object info){
 		((JeuClient)leJeu).envoi(info);
 		frmChoixJoueur.dispose();
 		frmArene.setVisible(true);
 	}
+	
 	private void evenementEntreeJeu(Object info) {
 		if ((String) info == "serveur") {
 			new ServeurSocket(this, PORT);
 			leJeu = new JeuServeur(this);
 			frmEntreeJeu.dispose();
 			frmArene = new Arene();
+			((JeuServeur)leJeu).constructionMurs();
 			frmArene.setVisible(true);
 		} else {
 			if ((new ClientSocket((String) info, PORT, this)).isConnectionOk()) {
