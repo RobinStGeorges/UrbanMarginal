@@ -1,5 +1,10 @@
 package modele;
 
-public class Joueur {
+import controleur.Global;
+
+public class Joueur extends Objet implements Global {
+	public Joueur(){
+		
+	}
 
 }

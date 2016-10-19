@@ -35,7 +35,7 @@ public class JeuServeur extends Jeu implements Global {
 	@Override
 	public void setConnection(Connection connection) {
 		// TODO Auto-generated method stub
-		lesJoueurs.put  (connection ,new Joueur(this));
+		lesJoueurs.put  (connection ,new Joueur);
 		} 
 
 	@Override
