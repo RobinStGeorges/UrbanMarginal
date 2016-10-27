@@ -4,6 +4,7 @@ package controleur;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import modele.Jeu;
 import modele.JeuClient;
@@ -32,6 +33,9 @@ public class Controle implements Global {
 	}
 	public void setConnection(outils.connexion.Connection connection){
 		this.connection = connection;
+		if (leJeu instanceof JeuServeur){
+			leJeu.setConnection(connection);
+		}
 	}
 
 	public static void main(String[] args) {
@@ -56,6 +60,14 @@ public class Controle implements Global {
 		if(unJeu instanceof JeuServeur){
 			evenementJeuServeur(ordre,info);
 		}
+		if(unJeu instanceof JeuClient){
+			evenementJeuClient(ordre,info);
+		}
+	}
+	private void evenementJeuClient(String ordre,Object info){
+		if(ordre=="ajoutPanelMurs"){
+			ajoutPanelMurs(((JPanel)info));
+		}
 	}
 	private void evenementJeuServeur(String ordre, Object info) {
 		// TODO Auto-generated method stub
@@ -63,6 +75,9 @@ public class Controle implements Global {
 			frmArene.ajoutMur((JLabel)info);
 			//test
 			//System.out.println("mur sont ajouté au frmArene");
+		}
+		if(ordre=="envoiPanelMurs"){
+			((JeuServeur)leJeu).envoi((Connection)info, frmArene.getJpnMur());
 		}
 	}
 

@@ -71,4 +71,13 @@ public class Arene extends JFrame implements Global {
 			jpnMurs.add(unMur);
 			jpnMurs.repaint();
 	}
+	public void ajoutPanelMurs(JPanel unPanel){
+		jpnMurs.add(unPanel);
+		jpnMurs.repaint();
+		contentPane.requestFocus();
+	}
+	public JPanel getJpnMur(){
+		return jpnMurs;
+		
+	}
 }
