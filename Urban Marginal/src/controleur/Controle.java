@@ -66,9 +66,9 @@ public class Controle implements Global {
 	}
 	private void evenementJeuClient(String ordre,Object info){
 		if(ordre=="ajoutPanelMurs"){
-			ajoutPanelMurs(((JPanel)info));
+			frmArene.ajoutPanelMurs((JPanel)info);
 		}
-	}
+	}//wtf
 	private void evenementJeuServeur(String ordre, Object info) {
 		// TODO Auto-generated method stub
 		if(ordre=="ajout mur"){

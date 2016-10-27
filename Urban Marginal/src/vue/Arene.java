@@ -80,4 +80,4 @@ public class Arene extends JFrame implements Global {
 		return jpnMurs;
 		
 	}
-}
+}//test
